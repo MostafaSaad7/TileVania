@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Backgound
+    uniqueID: 494345147
+    locked: 0
+  - name: water
+    uniqueID: 1817549297
+    locked: 0
+  - name: platform
+    uniqueID: 1842301673
+    locked: 0
+  - name: New Layer
+    uniqueID: 237365783
+    locked: 0
