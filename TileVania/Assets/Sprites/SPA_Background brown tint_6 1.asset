@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SPA_Background brown tint_8
+  m_Name: SPA_Background brown tint_6 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 4021284656184010451, guid: 106150886349e874dbc72f9dbd0ad891, type: 3}
+  m_Sprite: {fileID: 3104076937310148729, guid: 106150886349e874dbc72f9dbd0ad891, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
