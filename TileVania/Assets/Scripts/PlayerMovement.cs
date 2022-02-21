@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed=5f;
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
+    CapsuleCollider2D myCapsuleCollider;
     
     Animator myAnimator;
 
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody=GetComponent<Rigidbody2D>();
         myAnimator=GetComponent<Animator>();
+        myCapsuleCollider=GetComponent<CapsuleCollider2D>();
+
     }
 
     // Update is called once per frame
@@ -36,11 +39,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnJump(InputValue value)
-    {
+    {   
+        //if iam not touching the ground don't jump 
+        
+        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            return;
         if(value.isPressed)
         {
             myRigidbody.velocity+=new Vector2(0f,jumpSpeed);
-
         }
     }
     void Run()
