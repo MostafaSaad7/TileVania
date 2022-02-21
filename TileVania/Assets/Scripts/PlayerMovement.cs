@@ -17,10 +17,12 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
 
     float gravityScaleAtStart;
+    bool isAlive=true;
 
     // Start is called before the first frame update
     void Start()
     {
+
         myRigidbody=GetComponent<Rigidbody2D>();
         myAnimator=GetComponent<Animator>();
         myBodyCollider=GetComponent<CapsuleCollider2D>();
@@ -31,15 +33,18 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if(!isAlive) return;
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
+
     }
     
     void OnMove(InputValue value )
     {
-
+        if(!isAlive) return;
         moveInput=value.Get<Vector2>();
         Debug.Log(moveInput);
          
@@ -47,8 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {   
+
+        if(!isAlive) return;
         //if iam not touching the ground don't jump 
-        
         if(!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             return;
         if(value.isPressed)
@@ -86,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
         bool playerHorizontalSpeed=Mathf.Abs(myRigidbody.velocity.x)>Mathf.Epsilon;
         if(playerHorizontalSpeed)
         transform.localScale=new Vector2 (Mathf.Sign(myRigidbody.velocity.x),1f);
+
+    }
+    void Die()
+    {
+        if(myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        isAlive=false;
 
     }
 
